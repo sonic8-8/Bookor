@@ -20,12 +20,14 @@ class BookMemoActivity : AppCompatActivity() {
         binding = ActivityBookMemoBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // 메모 추가 버튼 클릭시 작동 로직
 //        binding.btnAddMemo.setOnClickListener {
 //            binding.etAddMemo.visibility
 //        }
+
         val currentDate = java.sql.Date(System.currentTimeMillis())
 
-        // 데이터 불러와야 하는 부분
+        // 데이터 불러와야 하는 부분 (임시 데이터 넣어둠)
         val memoList = listOf(
             BookMemo(currentDate, 111,"너무 재밌다. 50페이지를 순식간에 읽었다.")
         )
