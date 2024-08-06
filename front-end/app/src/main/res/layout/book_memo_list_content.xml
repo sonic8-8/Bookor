@@ -51,7 +51,7 @@
         android:paddingRight="0dp"
         android:paddingBottom="0dp"
         android:text="메모 수정"
-        android:textSize="8sp"
+        android:textSize="10sp"
         app:cornerRadius="5dp"
         app:layout_constraintBottom_toTopOf="@+id/tvMemoNote"
         app:layout_constraintEnd_toEndOf="@+id/tvMemoNote" />

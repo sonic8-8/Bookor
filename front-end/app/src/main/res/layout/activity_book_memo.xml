@@ -15,16 +15,17 @@
         android:layout_marginTop="15dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
+        tools:srcCompat="@drawable/noimg" />
 
     <TextView
         android:id="@+id/tvBookName"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:text="책이름"
         android:textSize="25sp"
         android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/line1"
         app:layout_constraintStart_toEndOf="@+id/ivBookCover"
         app:layout_constraintTop_toTopOf="@+id/ivBookCover" />
 
@@ -78,20 +79,20 @@
         android:id="@+id/tvProgressText1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="68dp"
+        android:layout_marginTop="15dp"
         android:text="진행률 : 100%"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tvBookName" />
+        app:layout_constraintStart_toStartOf="@+id/tvBookName"
+        app:layout_constraintTop_toBottomOf="@+id/tvBookName" />
 
     <TextView
         android:id="@+id/tvReviewHead"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="15dp"
         android:text="별점 및 리뷰"
         android:textSize="15sp"
-        app:layout_constraintStart_toStartOf="@+id/tvBookName"
-        app:layout_constraintTop_toBottomOf="@+id/tvBookName" />
+        app:layout_constraintStart_toStartOf="@+id/tvProgressbarBack"
+        app:layout_constraintTop_toBottomOf="@+id/tvProgressbarBack" />
 
     <Button
         android:id="@+id/btnAddMemo"
@@ -125,10 +126,11 @@
         android:id="@+id/tvProgressText2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginStart="30dp"
         android:text="100 / 300"
-        app:layout_constraintStart_toStartOf="@+id/tvProgressText1"
-        app:layout_constraintTop_toBottomOf="@+id/tvProgressText1" />
+        app:layout_constraintBottom_toBottomOf="@+id/tvProgressText1"
+        app:layout_constraintStart_toEndOf="@+id/tvProgressText1"
+        app:layout_constraintTop_toTopOf="@+id/tvProgressText1" />
 
     <Button
         android:id="@+id/btnProgressEdit"
@@ -151,14 +153,12 @@
         android:id="@+id/tvProgressbarBack"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="15dp"
+        android:layout_marginTop="8dp"
         android:background="#00BCD4"
         app:circularflow_defaultRadius="5dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/tvProgressText2"
-        app:layout_constraintTop_toBottomOf="@+id/tvProgressText2" />
+        app:layout_constraintEnd_toEndOf="@+id/btnProgressEdit"
+        app:layout_constraintStart_toStartOf="@+id/tvProgressText1"
+        app:layout_constraintTop_toBottomOf="@+id/tvProgressText1" />
 
     <EditText
         android:id="@+id/etAddMemo"
@@ -181,7 +181,7 @@
         android:id="@+id/tvReviewContent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="8dp"
         android:text=": 리뷰가 존재하지 않습니다"
         android:textSize="13sp"
         app:layout_constraintStart_toStartOf="@+id/tvReviewHead"
