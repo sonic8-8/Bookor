@@ -57,21 +57,22 @@
         android:layout_marginStart="15dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="15dp"
-        android:layout_marginBottom="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/btnAddMemo"
+        android:layout_marginBottom="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvMemoListHead"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/etMemo" />
 
     <TextView
         android:id="@+id/tvMemoListHead"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
+        android:background="#FFFEFE"
         android:text="독서 메모"
         android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/btnCoverAdd"
         app:layout_constraintTop_toBottomOf="@+id/line1" />
 
@@ -95,22 +96,24 @@
         app:layout_constraintTop_toBottomOf="@+id/tvProgressbarBack" />
 
     <Button
-        android:id="@+id/btnAddMemo"
+        android:id="@+id/btnUdMemo"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="15dp"
+        android:layout_marginEnd="15dp"
         android:backgroundTint="#5E5E5E"
         android:paddingLeft="0dp"
         android:paddingTop="0dp"
         android:paddingRight="0dp"
         android:paddingBottom="0dp"
-        android:text="+"
+        android:text="√"
         android:textSize="30dp"
         android:textStyle="bold"
         app:cornerRadius="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/etMemo"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/etMemo"
+        app:layout_constraintTop_toTopOf="@+id/etMemo" />
 
     <TextView
         android:id="@+id/line1"
@@ -132,50 +135,35 @@
         app:layout_constraintStart_toEndOf="@+id/tvProgressText1"
         app:layout_constraintTop_toTopOf="@+id/tvProgressText1" />
 
-    <Button
-        android:id="@+id/btnProgressEdit"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="15dp"
-        android:backgroundTint="#5E5E5E"
-        android:paddingLeft="0dp"
-        android:paddingTop="0dp"
-        android:paddingRight="0dp"
-        android:paddingBottom="0dp"
-        android:text="수정"
-        android:textSize="10sp"
-        app:cornerRadius="3dp"
-        app:layout_constraintBottom_toBottomOf="@+id/tvProgressText2"
-        app:layout_constraintStart_toEndOf="@+id/tvProgressText2"
-        app:layout_constraintTop_toTopOf="@+id/tvProgressText2" />
-
     <TextView
         android:id="@+id/tvProgressbarBack"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:background="#00BCD4"
+        android:background="#E8E8E8"
         app:circularflow_defaultRadius="5dp"
-        app:layout_constraintEnd_toEndOf="@+id/btnProgressEdit"
+        app:layout_constraintEnd_toEndOf="@+id/tvProgressText2"
         app:layout_constraintStart_toStartOf="@+id/tvProgressText1"
         app:layout_constraintTop_toBottomOf="@+id/tvProgressText1" />
 
     <EditText
-        android:id="@+id/etAddMemo"
+        android:id="@+id/etMemo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="10dp"
         android:ems="10"
         android:gravity="start|top"
         android:hint="메모작성"
         android:inputType="textMultiLine"
         android:padding="10dp"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toTopOf="@+id/btnAddMemo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:textSize="15sp"
+        android:visibility="visible"
+        app:layout_constraintEnd_toStartOf="@+id/btnUdMemo"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvMemoListHead" />
 
     <TextView
         android:id="@+id/tvReviewContent"
@@ -186,4 +174,17 @@
         android:textSize="13sp"
         app:layout_constraintStart_toStartOf="@+id/tvReviewHead"
         app:layout_constraintTop_toBottomOf="@+id/tvReviewHead" />
+
+    <EditText
+        android:id="@+id/etPages"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:ems="10"
+        android:hint="마지막 페이지"
+        android:inputType="number"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvMemoListHead"
+        app:layout_constraintStart_toEndOf="@+id/tvMemoListHead"
+        app:layout_constraintTop_toTopOf="@+id/tvMemoListHead" />
 </androidx.constraintlayout.widget.ConstraintLayout>
