@@ -1,20 +1,32 @@
 package com.smhrd.bookor
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.smhrd.bookor.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityMainBinding
+    private lateinit var bookAdapter: BookAdapter
+    private lateinit var bookList: MutableList<Book>
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_main)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
+
+        // ViewBinding 초기화
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        // RecyclerView 설정
+        bookList = mutableListOf(
+            Book("The Great Gatsby", "100%", "별점: 5, 리뷰: Great!"),
+            Book("1984", "80%", "별점: 4, 리뷰: Interesting!"),
+            Book("To Kill a Mockingbird", "60%", "별점: 5, 리뷰: Thought-provoking!")
+        )
+
+        bookAdapter = BookAdapter(bookList)
+        binding.recyclerView.layoutManager = LinearLayoutManager(this)
+        binding.recyclerView.adapter = bookAdapter
     }
 }
