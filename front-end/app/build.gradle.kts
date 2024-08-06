@@ -47,6 +47,8 @@ dependencies {
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.constraintlayout)
+    // 추가된 종속성
+    implementation("androidx.work:work-runtime-ktx:2.8.1") // WorkManager 라이브러리
     implementation(libs.volley)
     implementation(libs.gson)
     testImplementation(libs.junit)
