@@ -9,8 +9,8 @@
 
     <ImageView
         android:id="@+id/ivBookCover"
-        android:layout_width="102dp"
-        android:layout_height="104dp"
+        android:layout_width="100dp"
+        android:layout_height="127dp"
         android:layout_marginStart="15dp"
         android:layout_marginTop="15dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -31,7 +31,8 @@
     <Button
         android:id="@+id/btnCoverAdd"
         android:layout_width="0dp"
-        android:layout_height="25dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="10dp"
         android:backgroundTint="#E3E3E3"
         android:backgroundTintMode="src_in"
         android:paddingLeft="0dp"
@@ -40,12 +41,13 @@
         android:paddingBottom="0dp"
         android:text="책표지추가"
         android:textColor="#2E2E2E"
-        android:textSize="8sp"
+        android:textSize="10sp"
         app:cornerRadius="3dp"
         app:layout_constraintEnd_toEndOf="@+id/ivBookCover"
-        app:layout_constraintHorizontal_bias="0.071"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/ivBookCover"
-        tools:layout_editor_absoluteY="130dp" />
+        app:layout_constraintTop_toBottomOf="@+id/ivBookCover"
+        tools:ignore="MissingConstraints" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvMemoList"
@@ -57,8 +59,10 @@
         android:layout_marginBottom="10dp"
         app:layout_constraintBottom_toTopOf="@+id/btnAddMemo"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvMemoListHead" />
+        app:layout_constraintTop_toBottomOf="@+id/tvMemoListHead"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/tvMemoListHead"
@@ -80,11 +84,12 @@
         app:layout_constraintTop_toTopOf="@+id/tvBookName" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/tvReviewHead"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="52dp"
         android:text="별점 및 리뷰"
+        android:textSize="15sp"
         app:layout_constraintStart_toStartOf="@+id/tvBookName"
         app:layout_constraintTop_toBottomOf="@+id/tvBookName" />
 
@@ -92,6 +97,7 @@
         android:id="@+id/btnAddMemo"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:layout_marginBottom="15dp"
         android:backgroundTint="#5E5E5E"
         android:paddingLeft="0dp"
         android:paddingTop="0dp"
@@ -127,7 +133,7 @@
     <Button
         android:id="@+id/btnProgressEdit"
         android:layout_width="30dp"
-        android:layout_height="0dp"
+        android:layout_height="30dp"
         android:layout_marginStart="15dp"
         android:backgroundTint="#5E5E5E"
         android:paddingLeft="0dp"
@@ -135,7 +141,7 @@
         android:paddingRight="0dp"
         android:paddingBottom="0dp"
         android:text="수정"
-        android:textSize="8sp"
+        android:textSize="10sp"
         app:cornerRadius="3dp"
         app:layout_constraintBottom_toBottomOf="@+id/tvProgressText2"
         app:layout_constraintStart_toEndOf="@+id/tvProgressText2"
@@ -170,4 +176,14 @@
         app:layout_constraintBottom_toTopOf="@+id/btnAddMemo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tvReviewContent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text=": 리뷰가 존재하지 않습니다"
+        android:textSize="13sp"
+        app:layout_constraintStart_toStartOf="@+id/tvReviewHead"
+        app:layout_constraintTop_toBottomOf="@+id/tvReviewHead" />
 </androidx.constraintlayout.widget.ConstraintLayout>
