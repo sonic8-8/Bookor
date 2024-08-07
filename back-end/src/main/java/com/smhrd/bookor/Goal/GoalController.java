@@ -35,8 +35,7 @@ public class GoalController {
         responseDto.setUser_prgress(goal.getUserPrgress());
 
 
-        String responseMessage = String.format("Goal created or updated with ID: %d, user_goal: %s, user_progress: %s",
-                saveGoal.getGoalId(), saveGoal.getUserGoal(), saveGoal.getUserPrgress());
+
 
         return new ResponseEntity<>(responseDto,HttpStatus.CREATED);
     }
