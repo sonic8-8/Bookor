@@ -1,16 +1,20 @@
 package com.smhrd.bookor.Goal
 
+import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
+import com.smhrd.bookor.MainActivity
 import com.smhrd.bookor.R
 import org.json.JSONObject
 import org.json.JSONException
@@ -25,14 +29,32 @@ class GoalMain2Activity : AppCompatActivity() {
     private lateinit var currentEditText: EditText
     private lateinit var updateButton: Button
 
+
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.goal_main2)
-
         // findViewById를 onCreate() 내에서 호출합니다.
         goalEditText = findViewById(R.id.editTextGoal)
         currentEditText = findViewById(R.id.editTextCurrent)
         updateButton = findViewById(R.id.buttonUpdate)
+
+        val goaltext = findViewById<TextView>(R.id.textViewGoal)
+        val progresstext = findViewById<TextView>(R.id.textViewProgress)
+
+        findViewById<Button>(R.id.goalrevbtn).setOnClickListener{
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+
+        }
+
+
+        val goalshare = getSharedPreferences("MyAppPreferences", Context.MODE_PRIVATE)
+        val goaltextView = goalshare.getString("goalText",null)
+        val currentTextView = goalshare.getString("currentText",null)
+
+        goaltext.text = goaltextView
+        progresstext.text = currentTextView
 
 
         val sharedPreferences = getSharedPreferences("MyAppPreferences", Context.MODE_PRIVATE)
@@ -52,7 +74,6 @@ class GoalMain2Activity : AppCompatActivity() {
             val user_goal = goalEditText.text.toString()
             val user_prgress = currentEditText.text.toString()
 
-
             val jsonBody = JSONObject().apply {
                 put("user_goal", user_goal)
                 put("user_prgress", user_prgress)
@@ -70,7 +91,12 @@ class GoalMain2Activity : AppCompatActivity() {
                         // 응답 문자열을 JSON으로 변환합니다.
                         val jsonResponse = JSONObject(response)
                         // JSON 응답 처리 로직 추가
+                        goalEditText.setText(jsonResponse.getString("user_goal"))
+                        currentEditText.setText(jsonResponse.getString("user_prgress"))
+
                         Log.d(TAG, "JSON Response: $jsonResponse")
+
+
                     } catch (e: JSONException) {
                         Log.e(TAG, "Response is not a valid JSON: ${e.message}")
                     }
@@ -89,6 +115,24 @@ class GoalMain2Activity : AppCompatActivity() {
             }
 
             queue.add(stringRequest)
+
+
+
+
+            val sharedPreferences = getSharedPreferences("MyAppPreferences", Context.MODE_PRIVATE)
+            val editor = sharedPreferences.edit()
+            editor.putString("goalText", user_goal)
+            editor.putString("currentText", user_prgress)
+            editor.apply()
+
+
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+
+
         }
+
+
+
     }
 }

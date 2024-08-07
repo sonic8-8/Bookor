@@ -14,11 +14,11 @@ public class GoalController {
     private GoalService goalService;
 
     @PostMapping("/goal")
-    public ResponseEntity<String> receiveGoal(@RequestBody GoalDTO goalDto) {
+    public ResponseEntity<GoalDTO> receiveGoal(@RequestBody GoalDTO goalDto) {
         Long memberId = goalDto.getMemberId();
         System.out.println(memberId);
         if (memberId == null) {
-            return new ResponseEntity<>("Member ID must not be null", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>( HttpStatus.BAD_REQUEST);
         }
 
 
@@ -29,9 +29,15 @@ public class GoalController {
 
         Goal saveGoal = goalService.saveOrUpdateGoal(memberId, goal);
 
+
+        GoalDTO responseDto = new GoalDTO();
+        responseDto.setUser_goal(goal.getUserGoal());
+        responseDto.setUser_prgress(goal.getUserPrgress());
+
+
         String responseMessage = String.format("Goal created or updated with ID: %d, user_goal: %s, user_progress: %s",
                 saveGoal.getGoalId(), saveGoal.getUserGoal(), saveGoal.getUserPrgress());
 
-        return new ResponseEntity<>(responseMessage, HttpStatus.CREATED);
+        return new ResponseEntity<>(responseDto,HttpStatus.CREATED);
     }
 }

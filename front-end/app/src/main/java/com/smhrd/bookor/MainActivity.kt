@@ -1,5 +1,6 @@
 package com.smhrd.bookor
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -28,6 +29,18 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this,GoalMain2Activity::class.java)
             startActivity(intent)
         }
+
+        //메인 목표 텍스트 값
+        val sharedPreferences = getSharedPreferences("MyAppPreferences", Context.MODE_PRIVATE)
+        val goaltext = sharedPreferences.getString("goalText",null)
+        val currentText = sharedPreferences.getString("currentText",null)
+
+
+        //text수정 대기
+        findViewById<TextView>(R.id.tvGoal).text = goaltext
+        findViewById<TextView>(R.id.tvCurrent).text = currentText
+
+
 
         bookList = mutableListOf(
             Book("The Great Gatsby", "100%", "별점: 5, 리뷰: Great!"),
