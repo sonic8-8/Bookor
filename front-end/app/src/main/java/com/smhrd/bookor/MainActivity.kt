@@ -4,11 +4,13 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.ImageButton
 import androidx.appcompat.widget.SearchView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.smhrd.bookor.Goal.GoalMain2Activity
+import com.smhrd.bookor.alarm.AlarmmainActivity
 import com.smhrd.bookor.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -23,6 +25,13 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val alarmbtn = findViewById<ImageButton>(R.id.alrambtn)
+        //알람 페이지 이동
+        alarmbtn .setOnClickListener{
+            val intent = Intent(this,AlarmmainActivity::class.java)
+            startActivity(intent)
+        }
+
 
         //목표 설정
         binding.goalbtn.setOnClickListener{
@@ -36,7 +45,7 @@ class MainActivity : AppCompatActivity() {
         val currentText = sharedPreferences.getString("currentText",null)
 
 
-        //text수정 대기
+        //text수정
         findViewById<TextView>(R.id.tvGoal).text = goaltext
         findViewById<TextView>(R.id.tvCurrent).text = currentText
 

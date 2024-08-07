@@ -67,8 +67,6 @@ class LoginActivity : AppCompatActivity() {
 
                     // intent@@
                     val intent = Intent(this,MainActivity::class.java)
-                    intent.putExtra("userNick", userNick)
-                    intent.putExtra("memberId", memberId.toString())
 
                     startActivity(intent)
 
