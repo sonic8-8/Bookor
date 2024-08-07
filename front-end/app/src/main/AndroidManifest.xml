@@ -6,7 +6,6 @@
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
     <uses-permission android:name="android.permission.SET_ALARM" />
-
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
     <application
@@ -21,32 +20,39 @@
         android:theme="@style/Theme.Bookor"
         tools:targetApi="31">
         <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".member.JoinActivity"
+            android:exported="true" />
+        <activity
+            android:name=".member.LoginActivity"
+            android:exported="true" />
+        <activity
             android:name=".alarm.AlarmmainActivity"
             android:exported="true">
+
             <!-- 필요 시, 적절한 intent-filter를 추가 -->
             <intent-filter>
                 <action android:name="com.example.yourapp.ALARM_ACTION" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".Goal.GoalMain2Activity"
             android:exported="true">
+            <intent-filter>
+                <action android:name="com.example.yourapp.ALARM_ACTION" />
 
-        <intent-filter>
-            <action android:name="com.example.yourapp.ALARM_ACTION" />
-            <category android:name="android.intent.category.DEFAULT" />
-        </intent-filter>
-          </activity>
-
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".BookMemoActivity"
-            android:exported="true"/>
-
-
+            android:exported="true" />
         <activity
-            android:name=".MainActivity"
+            android:name=".member.StartActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustPan|adjustResize">
             <intent-filter>

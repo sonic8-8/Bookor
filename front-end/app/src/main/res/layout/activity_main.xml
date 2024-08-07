@@ -84,6 +84,16 @@
         android:contentDescription="Reminder Button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/ic_popup_reminder" /> <!-- Added contentDescription -->
+        app:srcCompat="@android:drawable/ic_popup_reminder" />
+
+    <TextView
+        android:id="@+id/LoginNick"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="228dp"
+        android:layout_marginEnd="108dp"
+        android:text="닉네임"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" /> <!-- Added contentDescription -->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
