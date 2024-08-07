@@ -1,5 +1,6 @@
 package com.smhrd.bookor
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -24,10 +25,11 @@ class MemoAdapter(
         return MemoViewHolder(itemView)
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: MemoViewHolder, position: Int) {
         val currentItem = memoList[position]
         holder.date.text = currentItem.date.toString()
-        holder.pages.text = "~" + currentItem.lastPage?.toString() + "pages"
+        holder.pages.text = "~" + currentItem.lastPage.toString() + "pages"
         holder.memoNote.text = currentItem.memo
 
         holder.btnMemoEdit.setOnClickListener {

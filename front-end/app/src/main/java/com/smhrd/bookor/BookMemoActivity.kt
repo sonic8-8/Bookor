@@ -34,7 +34,7 @@ class BookMemoActivity : AppCompatActivity() {
         binding.btnUdMemo.setOnClickListener {
             if (editingPosition != -1) {
                 // 수정 중인 경우
-                val updatedMemo = BookMemo(
+                BookMemo(
                     memoList[editingPosition].date,
                     binding.etPages.text.toString().toInt(), // 필요하면 수정
                     binding.etMemo.text.toString()

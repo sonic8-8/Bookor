@@ -1,23 +1,30 @@
 package com.smhrd.bookor.Goal;
 
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import com.smhrd.bookor.member.Member;
+import jakarta.persistence.*;
+import lombok.*;
 
 @Entity
+@Table(name = "goals")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Getter
+@AllArgsConstructor
+@Data
+@Builder
 public class Goal {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "goal_id")
+    private Long goalId;
 
-    private String message;
+    @Column(name = "user_goal", nullable = false)
+    private String userGoal;
+
+    @Column(name = "user_prgress", nullable = false)
+    private String userPrgress;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    private Member member;
 
 }

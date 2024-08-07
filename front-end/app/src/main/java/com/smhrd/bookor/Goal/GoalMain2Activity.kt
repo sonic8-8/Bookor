@@ -1,5 +1,6 @@
 package com.smhrd.bookor.Goal
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
@@ -33,20 +34,34 @@ class GoalMain2Activity : AppCompatActivity() {
         currentEditText = findViewById(R.id.editTextCurrent)
         updateButton = findViewById(R.id.buttonUpdate)
 
+
+        val sharedPreferences = getSharedPreferences("MyAppPreferences", Context.MODE_PRIVATE)
+        val memberId = sharedPreferences.getLong("memberId", -1L)
+
+        if (memberId == -1L) {
+            Log.e(TAG, "Invalid memberId")
+            finish()
+            return
+        }
+
+
+
         val queue: RequestQueue = Volley.newRequestQueue(this)
 
         updateButton.setOnClickListener {
             val user_goal = goalEditText.text.toString()
             val user_prgress = currentEditText.text.toString()
 
+
             val jsonBody = JSONObject().apply {
                 put("user_goal", user_goal)
                 put("user_prgress", user_prgress)
+                put("memberId" ,memberId)
             }
 
             // POST 요청
             val stringRequest = object : StringRequest(
-                Request.Method.POST, "$BASE_URL/Goal",
+                Request.Method.POST, "$BASE_URL/goal",
                 Response.Listener { response ->
                     // 서버의 문자열 응답을 처리합니다.
                     Log.d(TAG, "POST Response: $response")

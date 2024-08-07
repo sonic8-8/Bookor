@@ -1,10 +1,13 @@
 package com.smhrd.bookor
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import androidx.appcompat.widget.SearchView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.smhrd.bookor.Goal.GoalMain2Activity
 import com.smhrd.bookor.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -16,32 +19,47 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // ViewBinding 초기화
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // 닉네임 받아오기
-        getIntent().getStringExtra("userNick")
-        val userNick = intent.getStringExtra("userNick")
 
-        Log.d("userNick", userNick.toString())
+        //목표 설정
+        binding.goalbtn.setOnClickListener{
+            val intent = Intent(this,GoalMain2Activity::class.java)
+            startActivity(intent)
+        }
 
-
-        // 받은 닉네임 텍스트뷰에 표시
-        val loginNick = findViewById<TextView>(R.id.LoginNick)
-         loginNick.text = userNick
-
-
-
-        // RecyclerView 설정
         bookList = mutableListOf(
             Book("The Great Gatsby", "100%", "별점: 5, 리뷰: Great!"),
             Book("1984", "80%", "별점: 4, 리뷰: Interesting!"),
             Book("To Kill a Mockingbird", "60%", "별점: 5, 리뷰: Thought-provoking!")
         )
 
-        bookAdapter = BookAdapter(bookList)
+        // BookAdapter를 생성할 때 클릭 리스너를 전달
+        bookAdapter = BookAdapter(bookList) { book ->
+            // 아이템 클릭 시 상세 화면으로 이동
+            val intent = Intent(this,BookMemoActivity::class.java).apply {
+                putExtra("BOOK_title", book.title)
+                putExtra("BOOK_review", book.review)
+                putExtra("BOOK_title", book.progress)// 필요한 데이터 전달
+            }
+            startActivity(intent)
+        }
+
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
         binding.recyclerView.adapter = bookAdapter
+
+        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                bookAdapter.filter.filter(query)
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                bookAdapter.filter.filter(newText)
+                return true
+            }
+        })
     }
 }
+

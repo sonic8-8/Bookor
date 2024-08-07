@@ -78,6 +78,7 @@ class JoinActivity : AppCompatActivity() {
             // queue에 add
             val queue = Volley.newRequestQueue(this)
             queue.add(stringRequest)
+            finish()
 
         } // "회원가입" 리스너 끝
 
