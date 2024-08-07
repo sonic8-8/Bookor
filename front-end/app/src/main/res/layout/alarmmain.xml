@@ -18,4 +18,16 @@
         android:layout_below="@id/timePicker"
         android:layout_marginTop="16dp" />
 
+    <Button
+        android:id="@+id/alramrevbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/setAlarmButton"
+        android:layout_alignBottom="@+id/setAlarmButton"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="0dp"
+        android:text="back" />
+
 </RelativeLayout>

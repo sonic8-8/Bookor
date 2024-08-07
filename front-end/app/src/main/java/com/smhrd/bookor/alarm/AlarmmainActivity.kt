@@ -9,8 +9,10 @@ import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.TimePicker
 import androidx.appcompat.app.AppCompatActivity
+import com.smhrd.bookor.MainActivity
 import com.smhrd.bookor.R
 import java.util.*
 
@@ -18,13 +20,20 @@ class AlarmmainActivity : AppCompatActivity() {
 
     private val REQUEST_CODE_EXACT_ALARM_PERMISSION = 1234
 
-    @SuppressLint("MissingInflatedId")
+    @SuppressLint("MissingInflatedId", "WrongViewCast")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.alarmmain)  // Correct layout file
 
         val timePicker = findViewById<TimePicker>(R.id.timePicker)
         val setAlarmButton = findViewById<Button>(R.id.setAlarmButton)
+        val backbtn = findViewById<Button>(R.id.alramrevbtn)
+
+        backbtn.setOnClickListener{
+            finish()
+        }
+
+
 
         setAlarmButton?.setOnClickListener {  // Safe call to handle possible null
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
@@ -36,6 +45,8 @@ class AlarmmainActivity : AppCompatActivity() {
 
             setAlarm(timePicker)
         }
+
+
     }
 
     private fun canScheduleExactAlarms(): Boolean {
