@@ -54,6 +54,3 @@ out/
 
 # 추가로, Android와 Spring 프로젝트에서 공통으로 무시해야 하는 파일/디렉토리
 local.properties
-
-#환경 변수 파일
-.env
