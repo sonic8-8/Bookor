@@ -20,11 +20,8 @@ public class Memo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long memoId;
 
-    @Column(name = "user_id")
-    private String userId;
-
-    @Column(name = "book_title")
-    private String bookTitle;
+    @Column(name = "book_id")
+    private Long bookId;
 
     @Column(name="memo_date")
     private Date memoDate;

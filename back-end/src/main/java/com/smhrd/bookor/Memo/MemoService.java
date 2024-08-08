@@ -11,8 +11,8 @@ public class MemoService {
     @Autowired
     private MemoRepository repository;
 
-    public List<Memo> listup(Memo memo){
-        return repository.findAllByBookTitle(memo.getBookTitle());
+    public List<Memo> findByBookId(Long bookId) {
+        return repository.findByBookId(bookId);
     }
 
     public void save(Memo memo) {

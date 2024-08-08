@@ -1,5 +1,7 @@
 package com.smhrd.bookor.Memo;
 
+import com.smhrd.bookor.Book.Book;
+import com.smhrd.bookor.Book.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,22 +13,21 @@ public class MemoController {
 
     @Autowired
     private MemoService service;
+    @Autowired
+    private BookService bookService;
 
     @GetMapping("/memo/listup")
-    public List<Memo> listup(@RequestBody MemoDTO memoDTO) {
-
-        Memo memo = Memo.builder()
-                        .bookTitle(memoDTO.getBookTitle())
-                        .build();
-
-        List<Memo> memoList = service.listup(memo);
-
+    public List<Memo> listup(@RequestParam("bookId") Long bookId) {
+        List<Memo> memoList = service.findByBookId(bookId);
         return memoList;
     }
 
-    @GetMapping("/memo/add")
-    public void add(@PathVariable Long id, @RequestBody MemoDTO memoDTO) {
+    @PostMapping("/memo/add") // @GetMapping -> @PostMapping 변경
+    public void add(@RequestBody MemoDTO memoDTO) {
+        Book book = bookService.findById(memoDTO.getBookId()); // 책 정보 조회 (예시)
+
         Memo memo = Memo.builder()
+                .bookId(book.getBookId()) // 책 정보 추가
                 .memoDate(memoDTO.getMemoDate())
                 .memoPages(memoDTO.getMemoPages())
                 .memoContent(memoDTO.getMemoContent())
@@ -34,6 +35,7 @@ public class MemoController {
 
         service.save(memo);
     }
+
 
     @PutMapping("/memo/update/{id}")
     public void update(@PathVariable Long id, @RequestBody MemoDTO memoDTO) {

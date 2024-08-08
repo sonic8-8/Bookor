@@ -10,11 +10,15 @@ public class BookService {
     @Autowired
     private BookRepository repository;
 
-    public List<Book> listup(Book book) {
-        return repository.findAllByUserId(book.getUserId());
+    public Book findById(Long id) {
+        return repository.findById(id).get();
     }
-
     public void save(Book book){
         repository.save(book);
     }
+
+    public List<Book> findBooksByUserId(String userId) {
+        return repository.findByUserId(userId);
+    }
+
 }

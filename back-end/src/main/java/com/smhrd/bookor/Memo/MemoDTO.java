@@ -7,7 +7,7 @@ import java.sql.Date;
 @Data
 public class MemoDTO {
 
-    private String bookTitle;
+    private Long bookId;
     private Date memoDate;
     private int memoPages;
     private String memoContent;

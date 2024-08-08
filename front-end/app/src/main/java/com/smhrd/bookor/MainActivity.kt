@@ -49,8 +49,6 @@ class MainActivity : AppCompatActivity() {
         findViewById<TextView>(R.id.tvGoal).text = goaltext
         findViewById<TextView>(R.id.tvCurrent).text = currentText
 
-
-
         bookList = mutableListOf(
             Book("The Great Gatsby", 100, "별점: 5, 리뷰: Great!"),
             Book("1984", 80, "별점: 4, 리뷰: Interesting!"),
