@@ -1,5 +1,6 @@
 package com.smhrd.bookor
 
+import android.content.Intent
 import android.widget.Filter
 import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
@@ -10,20 +11,27 @@ import com.smhrd.bookor.databinding.ItemBookBinding
 
 class BookAdapter(
     private val bookList: List<Book>,
-    private val itemClickListener: (Book) -> Unit // 클릭 리스너를 인자로 받음
+    private val itemClickListener: (Book) -> Unit
 ) : RecyclerView.Adapter<BookAdapter.BookViewHolder>(), Filterable {
 
     private var filteredBookList: List<Book> = bookList
 
     inner class BookViewHolder(private val binding: ItemBookBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(book: Book) {
+            binding.ivBookCover.setImageResource(R.drawable.img)
             binding.bookTitle.text = book.title
             binding.bookProgress.text = "진행률: ${book.progress}"
             binding.bookReview.text = book.review
 
             // 클릭 리스너 설정
             binding.root.setOnClickListener {
-                itemClickListener(book)  // 클릭 시 리스너 호출
+                val intent = Intent(binding.root.context, BookMemoActivity::class.java).apply {
+                    putExtra("BOOK_ID", book.id)
+                    putExtra("BOOK_TITLE", book.title)
+                    putExtra("BOOK_PROGRESS", book.progress)
+                    putExtra("BOOK_REVIEW", book.review)
+                }
+                binding.root.context.startActivity(intent)
             }
         }
     }
@@ -39,7 +47,6 @@ class BookAdapter(
 
     override fun getItemCount() = filteredBookList.size
 
-    // Filterable 인터페이스 구현
     override fun getFilter(): Filter {
         return object : Filter() {
             override fun performFiltering(constraint: CharSequence?): FilterResults {
@@ -51,7 +58,6 @@ class BookAdapter(
                         it.title.lowercase().contains(filterPattern)
                     }
                 }
-
                 return FilterResults().apply {
                     values = filteredBookList
                 }
