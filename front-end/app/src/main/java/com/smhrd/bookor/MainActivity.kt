@@ -59,10 +59,24 @@ class MainActivity : AppCompatActivity() {
             addBook()
         }
 
+
         // RecyclerView 설정
         bookAdapter = BookAdapter(bookList) { book ->
             // 아이템 클릭 시 상세 화면으로 이동
             val intent = Intent(this, BookMemoActivity::class.java).apply {
+
+        bookList = mutableListOf(
+            Book(3,"The Great Gatsby", "100%", "별점: 5, 리뷰: Great!"),
+            Book(2,"1984", "80%", "별점: 4, 리뷰: Interesting!"),
+            Book(1,"To Kill a Mockingbird", "60%", "별점: 5, 리뷰: Thought-provoking!")
+        )
+
+        // BookAdapter를 생성할 때 클릭 리스너를 전달
+        bookAdapter = BookAdapter(bookList) { book ->
+            // 아이템 클릭 시 상세 화면으로 이동
+            val intent = Intent(this,BookMemoActivity::class.java).apply {
+                putExtra("BOOK_ID", book.id)
+
                 putExtra("BOOK_title", book.title)
                 putExtra("BOOK_pages", book.pages)
                 putExtra("BOOK_review", book.review)
