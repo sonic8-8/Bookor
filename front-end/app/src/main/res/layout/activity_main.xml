@@ -87,4 +87,34 @@
         app:layout_constraintTop_toTopOf="@+id/tvGoal"
         app:layout_constraintVertical_bias="1.0" />
 
+    <Button
+        android:id="@+id/btnAddBook"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+"
+        app:layout_constraintBottom_toBottomOf="@+id/etBookPages"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/etBookPages" />
+
+    <EditText
+        android:id="@+id/etBookTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:text="Name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <EditText
+        android:id="@+id/etBookPages"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="@+id/etBookTitle"
+        app:layout_constraintEnd_toStartOf="@+id/btnAddBook"
+        app:layout_constraintStart_toEndOf="@+id/etBookTitle"
+        app:layout_constraintTop_toTopOf="@+id/etBookTitle" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
