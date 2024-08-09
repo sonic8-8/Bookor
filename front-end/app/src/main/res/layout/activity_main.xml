@@ -8,83 +8,95 @@
     tools:context=".MainActivity">
 
     <!-- 검색을 위한 SearchView 추가 -->
-
     <androidx.appcompat.widget.SearchView
         android:id="@+id/searchView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="Search"
-        app:layout_constraintBottom_toTopOf="@id/recyclerView"
-        app:layout_constraintEnd_toStartOf="@+id/alrambtn"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.165" />
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/alrambtn"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="50dp"
-        android:padding="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
-
+    <!-- 알림 버튼 -->
     <ImageButton
         android:id="@+id/alrambtn"
-        android:layout_width="68dp"
-        android:layout_height="66dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:contentDescription="Reminder Button"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/searchView"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/ic_popup_reminder" />
 
+    <!-- 사용자 이미지 -->
+
+    <!-- 목표 설정 버튼 및 현재 목표 표시 텍스트 -->
+
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/iv_user"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginStart="46dp"
-        android:layout_marginTop="112dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toTopOf="@id/recyclerView"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/searchView"
+        app:layout_constraintVertical_chainStyle="packed"
         app:srcCompat="@drawable/noimg" />
 
     <Button
         android:id="@+id/goalbtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="52dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginLeft="136dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="52dp"
         android:text="목표설정"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/searchView" />
+        app:layout_constraintLeft_toRightOf="@id/iv_user"
+        app:layout_constraintTop_toTopOf="@id/iv_user" />
 
     <TextView
         android:id="@+id/tvGoal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/goalbtn" />
+        android:text="목표"
+        app:layout_constraintLeft_toLeftOf="@id/goalbtn"
+        app:layout_constraintTop_toBottomOf="@id/goalbtn" />
 
+    <!-- 리사이클러 뷰 -->
     <TextView
         android:id="@+id/tvCurrent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="68dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="@+id/tvGoal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tvGoal"
+        android:layout_marginLeft="20dp"
+        android:text="현재상태"
+        app:layout_constraintLeft_toRightOf="@id/tvGoal"
+        app:layout_constraintTop_toTopOf="@id/tvGoal" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="60dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_user"
         app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/userimgbtn"
+        android:layout_width="103dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="116dp"
+        android:text="프로필변경"
+        android:textSize="10sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.126"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

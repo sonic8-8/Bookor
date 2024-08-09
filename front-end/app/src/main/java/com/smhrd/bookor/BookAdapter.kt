@@ -64,4 +64,10 @@ class BookAdapter(
             }
         }
     }
+
+    //프로필 사진 변경
+
+
+
+
 }
