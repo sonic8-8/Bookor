@@ -29,27 +29,6 @@
         app:layout_constraintStart_toEndOf="@+id/ivBookCover"
         app:layout_constraintTop_toTopOf="@+id/ivBookCover" />
 
-    <Button
-        android:id="@+id/btnCoverAdd"
-        android:layout_width="0dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="10dp"
-        android:backgroundTint="#E3E3E3"
-        android:backgroundTintMode="src_in"
-        android:paddingLeft="0dp"
-        android:paddingTop="0dp"
-        android:paddingRight="0dp"
-        android:paddingBottom="0dp"
-        android:text="책표지추가"
-        android:textColor="#2E2E2E"
-        android:textSize="10sp"
-        app:cornerRadius="3dp"
-        app:layout_constraintEnd_toEndOf="@+id/ivBookCover"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/ivBookCover"
-        app:layout_constraintTop_toBottomOf="@+id/ivBookCover"
-        tools:ignore="MissingConstraints" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvMemoList"
         android:layout_width="0dp"
@@ -68,13 +47,16 @@
         android:id="@+id/tvMemoListHead"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
         android:background="#FFFEFE"
         android:text="독서 메모"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/btnCoverAdd"
-        app:layout_constraintTop_toBottomOf="@+id/line1" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.048"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.299" />
 
     <TextView
         android:id="@+id/tvProgressText1"
@@ -119,11 +101,12 @@
         android:id="@+id/line1"
         android:layout_width="0dp"
         android:layout_height="1dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="192dp"
         android:background="#000000"
-        app:layout_constraintEnd_toEndOf="@+id/rvMemoList"
-        app:layout_constraintStart_toStartOf="@+id/btnCoverAdd"
-        app:layout_constraintTop_toBottomOf="@+id/btnCoverAdd" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tvProgressText2"

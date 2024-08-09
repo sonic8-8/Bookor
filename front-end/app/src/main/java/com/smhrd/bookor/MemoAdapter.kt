@@ -9,7 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 class MemoAdapter(
-    private val memoList: List<BookMemo>,
+    private val memoList: MutableList<BookMemo>,
     private val onEditClickListener: (BookMemo, Int) -> Unit // position 정보 추가
 ) : RecyclerView.Adapter<MemoAdapter.MemoViewHolder>() {
 
@@ -38,4 +38,27 @@ class MemoAdapter(
     }
 
     override fun getItemCount() = memoList.size
+
+    // 새로운 메모 추가 메서드
+    fun addMemo(memo: BookMemo) {
+        memoList.add(memo)
+        notifyItemInserted(memoList.size - 1)
+    }
+
+    // 메모 업데이트 메서드
+    fun updateMemo(position: Int, memo: BookMemo) {
+        memoList[position] = memo
+        notifyItemChanged(position)
+    }
+
+    // 메모 리스트 초기화 메서드
+    fun updateMemoList(newMemoList: List<BookMemo>) {
+        memoList.clear()
+        memoList.addAll(newMemoList)
+        notifyDataSetChanged()
+    }
+
+    fun getItem(position: Int): BookMemo {
+        return memoList[position]
+    }
 }

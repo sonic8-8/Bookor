@@ -56,7 +56,13 @@ class LoginActivity : AppCompatActivity() {
                     val member = gson.fromJson(response, Member::class.java)
 
                     // 객체에서 닉네임만 추출하기
-                    val userNick = member.userNick
+                    try {
+                        val userNick = member?.userNick ?: "Default Nickname"
+                        // userNick 사용
+                    } catch (e: Exception) {
+                        Log.e("LoginActivity", "Error: ${e.message}")
+                    }
+
                     val memberId = member.id
 
 
